@@ -53,6 +53,7 @@ var DatePicker = React.createClass({
     onClickOutside: React.PropTypes.func,
     onChangeRaw: React.PropTypes.func,
     onFocus: React.PropTypes.func,
+    onKeyDown: React.PropTypes.func,
     onMonthChange: React.PropTypes.func,
     openToDate: React.PropTypes.object,
     peekNextMonth: React.PropTypes.bool,
@@ -90,6 +91,7 @@ var DatePicker = React.createClass({
       dropdownMode: 'scroll',
       onFocus () {},
       onBlur () {},
+      onKeyDown () {},
       onSelect () {},
       onClickOutside () {},
       onMonthChange () {},
@@ -241,6 +243,7 @@ var DatePicker = React.createClass({
   },
 
   onInputKeyDown (event) {
+    this.props.onKeyDown(event)
     if (!this.state.open && !this.props.inline) {
       if (/^Arrow/.test(event.key)) {
         this.onInputClick()
