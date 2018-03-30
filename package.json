@@ -2,7 +2,7 @@
   "author": "fresk",
   "name": "react-datepicker-fresk",
   "description": "A simple and reusable datepicker component for React",
-  "version": "0.45.0",
+  "version": "0.46.0",
   "license": "MIT",
   "homepage": "https://github.com/fresk-nc/react-datepicker",
   "main": "dist/react-datepicker.min.js",
