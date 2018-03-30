@@ -112,10 +112,10 @@ var DatePicker = React.createClass({
 
   getInitialState () {
     const defaultPreSelection =
-      this.props.openToDate ? moment(this.props.openToDate)
-      : this.props.selectsEnd && this.props.startDate ? moment(this.props.startDate)
-      : this.props.selectsStart && this.props.endDate ? moment(this.props.endDate)
-      : moment()
+      this.props.openToDate ? moment.utc(this.props.openToDate)
+      : this.props.selectsEnd && this.props.startDate ? moment.utc(this.props.startDate)
+      : this.props.selectsStart && this.props.endDate ? moment.utc(this.props.endDate)
+      : moment.utc()
     const minDate = getEffectiveMinDate(this.props)
     const maxDate = getEffectiveMaxDate(this.props)
     const boundedPreSelection =
@@ -126,7 +126,7 @@ var DatePicker = React.createClass({
     return {
       open: false,
       preventFocus: false,
-      preSelection: this.props.selected ? moment(this.props.selected) : boundedPreSelection
+      preSelection: this.props.selected ? moment.utc(this.props.selected) : boundedPreSelection
     }
   },
 
@@ -209,7 +209,7 @@ var DatePicker = React.createClass({
     if (!isSameDay(this.props.selected, changedDate) || this.props.disableDateAutoCorrection) {
       if (changedDate !== null) {
         if (this.props.selected) {
-          changedDate = moment(changedDate).set({
+          changedDate = moment.utc(changedDate).set({
             hour: this.props.selected.hour(),
             minute: this.props.selected.minute(),
             second: this.props.selected.second()
@@ -250,7 +250,7 @@ var DatePicker = React.createClass({
       }
       return
     }
-    const copy = moment(this.state.preSelection)
+    const copy = moment.utc(this.state.preSelection)
     if (event.key === 'Enter') {
       event.preventDefault()
       this.handleSelect(copy, event)
